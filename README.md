@@ -2,7 +2,8 @@
 
 ## The Go Data Science Library
 
-![Gopher](./resources/Gopher.png)
+<img src="./resources/Gopher.png" width=400px>
+
 
 This library has been developed with an idiomatic design process, and inspiration from a few sources.
 

@@ -14,19 +14,6 @@ type KMeaner interface {
 	fit_predict()
 }
 
-// An embedded struct holding content
-// from another struct and two
-// other string variables
-// named Animals
-type KMeans struct {
-	// Number of Clusters
-	num_clusters uint
-	// Max Iterations
-	max_iters uint
-	// Clusters
-	centroids [][2]float64
-}
-
 // func euclidian_distance(setA, setB []float32) []int {
 
 // 	val := []int{}
@@ -42,7 +29,7 @@ func distance(pointA, pointB [2]float64) float64 {
 	return math.Sqrt(math.Pow(dx, 2) + math.Pow(dy, 2))
 }
 
-func fit(data [][2]float64, num_clusters uint, max_iters uint) KMeans {
+func Fit(data [][2]float64, num_clusters uint, max_iters uint) [][2]float64 {
 	// if km.num_clusters > len(dataset) {
 	// 	// TODO, some 'error' checking
 	// }
@@ -112,11 +99,11 @@ func fit(data [][2]float64, num_clusters uint, max_iters uint) KMeans {
 
 	// fmt.Println(clusters_new)
 
-	return KMeans{num_clusters: num_clusters, max_iters: max_iters, centroids: centroids}
+	return centroids
 
 }
 
-func predict(km KMeans, data [][2]float64) []int {
+func Predict(centroids [][2]float64, data [][2]float64) []int {
 
 	clusters := make([]int, len(data))
 
@@ -124,7 +111,7 @@ func predict(km KMeans, data [][2]float64) []int {
 		// Find each nearest centroid cj
 		var min_distance float64 = math.Inf(1)
 		var min_index int
-		for j, c := range km.centroids {
+		for j, c := range centroids {
 			var _distance = distance(x, c)
 
 			if math.Min(min_distance, _distance) == _distance {
@@ -141,10 +128,10 @@ func predict(km KMeans, data [][2]float64) []int {
 
 }
 
-func fit_predict(data [][2]float64, num_clusters uint, max_iters uint) []int {
-	km := fit(data, num_clusters, max_iters)
+func FitPredict(data [][2]float64, num_clusters uint, max_iters uint) []int {
+	km := Fit(data, num_clusters, max_iters)
 
-	predictions := predict(km, data)
+	predictions := Predict(km, data)
 
 	return predictions
 }
