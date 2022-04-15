@@ -7,9 +7,7 @@
 
 This library has been developed with an idiomatic design process, and inspiration from a few sources.
 
-<ul>
-<li><a>Go Proverbs With Rob Pike</a href="https://www.youtube.com/watch?v=PAAkCSZUG1c"></li>
-</ul>
+* [Go Proverbs With Rob Pike](https://www.youtube.com/watch?v=PAAkCSZUG1c)
 
 ## Installing
 
