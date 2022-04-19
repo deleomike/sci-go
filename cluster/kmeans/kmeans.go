@@ -1,4 +1,4 @@
-package scigo
+package kmeans
 
 import (
 	"math"
@@ -8,10 +8,10 @@ import (
 
 // Animal is the name we want but since we are
 
-type KMeaner interface {
-	fit()
-	predict()
-	fit_predict()
+type KMeans interface {
+	Fit()
+	Predict()
+	FitPredict()
 }
 
 // func euclidian_distance(setA, setB []float32) []int {

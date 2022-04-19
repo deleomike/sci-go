@@ -1,4 +1,4 @@
-package scigo
+package kmeans
 
 import (
 	"math"
