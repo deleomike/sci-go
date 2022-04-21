@@ -2,7 +2,7 @@ package internal
 
 import "fmt"
 
-func ArrayEqual[T int, float32, float64, string] (a, b []T) bool{
+func ArrayEqual[T int] (a, b []T) bool{
 	fmt.Println(a)
 	fmt.Println(b)
 	if len(a) != len(b) {
