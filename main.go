@@ -26,7 +26,7 @@ func main() {
 		{10, 0},
 	}
 
-	num_clusters = 2
+	num_clusters = 3
 	max_iters = 200
 
 	// Fit a dataset

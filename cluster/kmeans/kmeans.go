@@ -2,6 +2,8 @@ package kmeans
 
 import (
 	"math"
+
+	"github.com/deleomike/sci-go/cluster"
 )
 
 // Importing fmt package for the sake of printing
@@ -21,13 +23,6 @@ type KMeans interface {
 // 	return val
 
 // }
-
-func distance(pointA, pointB [2]float64) float64 {
-	var dx = pointB[0] - pointA[0]
-	var dy = pointB[1] - pointA[1]
-
-	return math.Sqrt(math.Pow(dx, 2) + math.Pow(dy, 2))
-}
 
 func Fit(data [][2]float64, num_clusters uint, max_iters uint) [][2]float64 {
 	// if km.num_clusters > len(dataset) {
@@ -58,7 +53,7 @@ func Fit(data [][2]float64, num_clusters uint, max_iters uint) [][2]float64 {
 			var min_distance float64 = math.Inf(1)
 			var min_index int
 			for j, c := range centroids {
-				var _distance = distance(x, c)
+				var _distance = cluster.EuclidianDistance(x, c)
 
 				if math.Min(min_distance, _distance) == _distance {
 					min_index = j
@@ -105,26 +100,7 @@ func Fit(data [][2]float64, num_clusters uint, max_iters uint) [][2]float64 {
 
 func Predict(centroids [][2]float64, data [][2]float64) []int {
 
-	clusters := make([]int, len(data))
-
-	for i, x := range data {
-		// Find each nearest centroid cj
-		var min_distance float64 = math.Inf(1)
-		var min_index int
-		for j, c := range centroids {
-			var _distance = distance(x, c)
-
-			if math.Min(min_distance, _distance) == _distance {
-				min_index = j
-				min_distance = _distance
-			}
-		}
-
-		// Assign the point xi to cluster j
-		clusters[i] = min_index
-	}
-
-	return clusters
+	return cluster.Predict(centroids, data)
 
 }
 

@@ -2,6 +2,9 @@ package mean_shift
 
 import (
 	"math"
+	"sort"
+
+	"github.com/deleomike/sci-go/cluster"
 )
 
 func EstimateBandwidth() {
@@ -93,15 +96,14 @@ func Fit(data [][2]float64, bandwidth float64, max_iters uint) [][2]float64 {
 			}
 		}
 
+		// Sort the unique set
+		sort.Slice(unique, func(i, j int) bool {
+			return unique[i][0] < unique[j][0]
+		})
+
 		// unique.so
 
 		prev_centroids = centroids
-
-		// fmt.Println("unique", unique)
-		// fmt.Println("prev centroids", prev_centroids)
-
-		// fmt.Println(new_centroids)
-		// fmt.Println(prev_centroids)
 
 		done = true
 
@@ -127,4 +129,18 @@ func Fit(data [][2]float64, bandwidth float64, max_iters uint) [][2]float64 {
 
 	return centroids
 
+}
+
+func Predict(centroids [][2]float64, data [][2]float64) []int {
+
+	return cluster.Predict(centroids, data)
+
+}
+
+func FitPredict(data [][2]float64, bandwidth float64, max_iters uint) []int {
+	centroids := Fit(data, bandwidth, max_iters)
+
+	predictions := Predict(centroids, data)
+
+	return predictions
 }
