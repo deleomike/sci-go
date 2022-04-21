@@ -1,21 +1,11 @@
-package scigo
+package kmeans
 
 import (
 	"math"
 	"testing"
-)
 
-func intArrayEquals(a []int, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i, v := range a {
-		if v != b[i] {
-			return false
-		}
-	}
-	return true
-}
+	"github.com/deleomike/sci-go/internal"
+)
 
 func TestFit(t *testing.T) {
 	//todo
@@ -55,8 +45,8 @@ func TestPredict(t *testing.T) {
 
 	var cluster_ids = Predict(centroids, data)
 
-	if !(intArrayEquals(cluster_ids, []int{0, 0, 0, 1, 1, 1}) ||
-		intArrayEquals(cluster_ids, []int{1, 1, 1, 0, 0, 0})) {
+	if !(internal.ArrayEqual[int](cluster_ids, []int{0, 0, 0, 1, 1, 1}) ||
+		internal.ArrayEqual[int](cluster_ids, []int{1, 1, 1, 0, 0, 0})) {
 
 		t.FailNow()
 
@@ -76,8 +66,8 @@ func TestFitPredict(t *testing.T) {
 
 	var cluster_ids = FitPredict(data, 2, 100)
 
-	if !(intArrayEquals(cluster_ids, []int{0, 0, 0, 1, 1, 1}) ||
-		intArrayEquals(cluster_ids, []int{1, 1, 1, 0, 0, 0})) {
+	if !(internal.ArrayEqual[int](cluster_ids, []int{0, 0, 0, 1, 1, 1}) ||
+		internal.ArrayEqual[int](cluster_ids, []int{1, 1, 1, 0, 0, 0})) {
 
 		t.FailNow()
 
