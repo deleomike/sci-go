@@ -22,6 +22,7 @@ func Fit(data [][2]float64, k uint) {
 			}
 		}
 		// TODO Sort
+
 		fmt.Println(distances)
 	}
 
