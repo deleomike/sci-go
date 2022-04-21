@@ -6,6 +6,10 @@
 
 This library is a data science library, not necessarily a Machine Learning or Deep Learning library. SciGo has been developed with an idiomatic design process, and inspiration from a few sources.
 
+<!-- TODO, maybe also make this a CMD line tool
+TODO: also make a pipeline tool like sklearn
+ -->
+
 * [Go Proverbs With Rob Pike](https://www.youtube.com/watch?v=PAAkCSZUG1c)
 
 ## Why Should I Use SciGo?
@@ -16,7 +20,7 @@ This library is a data science library, not necessarily a Machine Learning or De
 2. SciGo is very easy to use
    * SciGo has a very clear and organized design pattern
    * We painstakingly limit our dependencies to make your life easier.
-3. SciGo is ambitious and has a solid roadmap for a ton of features
+3. SciGo is ambitious and has a [solid roadmap](https://github.com/deleomike/sci-go/issues/1) for a ton of features
 
 ## Installing
 
